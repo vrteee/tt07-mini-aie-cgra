@@ -8,13 +8,15 @@ You can also include images in this folder and reference them in the markdown. E
 -->
 
 ## How it works
+This is a minimalistic coarse-grained reconfigurable array inspired by AMD AI engine architecture. The hardware design consists of
 
-Explain how your project works
+- A 2x2 array of compute tiles
+- A simplified packet-switched network-on-chip (NoC) to connect the compute tiles
+- Two interface tiles to connect the array to external memory and host
+
+The packets loaded by interface tiles are routed through the NoC to the compute tiles. The compute tiles process the packets and send to next compute tile or interface tile. The packets are processed in a pipelined manner. 
 
 ## How to test
 
-Explain how to use your project
+TBA
 
-## External hardware
-
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
