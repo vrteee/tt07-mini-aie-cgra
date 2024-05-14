@@ -19,8 +19,13 @@ module tt_um_mini_aie_2x2 (
   // intermediate regs between FIFOs
   reg [7:0] switch_in_reg[4];
   reg [7:0] switch_out_reg[4];
+
   reg [7:0] pe_out_reg[4];
   reg [7:0] pe_in_reg[4];
+
+  // control signals
+  logic switch_fifo_rd_en[4];
+  logic switch_fifo_wr_en[4];
   
   // generate noc and pe array
   generate
@@ -34,7 +39,7 @@ module tt_um_mini_aie_2x2 (
             .clk(clk),
             .rst_n(rst_n),
             .w_en(ena),
-            .r_en(ena),
+            .r_en(switch_fifo_rd_en[i]),
             .data_in(ui_in + uio_in),
             .data_out(switch_in_reg[i]),
             .full(),
@@ -47,8 +52,8 @@ module tt_um_mini_aie_2x2 (
         ) fifo (
             .clk(clk),
             .rst_n(rst_n),
-            .w_en(ena),
-            .r_en(ena),
+            .w_en(switch_fifo_wr_en[i-1]),
+            .r_en(switch_fifo_rd_en[i]),
             .data_in(switch_out_reg[i-1]),
             .data_out(switch_in_reg[i]),
             .full(),
@@ -64,7 +69,9 @@ module tt_um_mini_aie_2x2 (
           .switch_fifo_in(switch_in_reg[i]),
           .switch_fifo_out(switch_out_reg[i]),
           .pe_fifo_in(pe_out_reg[i]),
-          .pe_fifo_out(pe_in_reg[i])
+          .pe_fifo_out(pe_in_reg[i]),
+          .rd_en(switch_fifo_rd_en[i]),
+          .wr_en(switch_fifo_wr_en[i])
       );
 
       compute_tile pe (

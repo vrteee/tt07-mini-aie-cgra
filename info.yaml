@@ -1,14 +1,14 @@
 # Tiny Tapeout project information
 project:
-  title:        "mini-aie"    # Project title
+  title:        "mini-aie-cgra"    # Project title
   author:       "hecmay"      # Your name
   discord:      "vrteee"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
   description:  "a mini aie/coarse-grained reconfigurable array"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     10000000       # Clock frequency in Hz
+  clock_hz:     5000000       # Clock frequency in Hz
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_mini_aie_2x2"
