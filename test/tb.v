@@ -23,7 +23,7 @@ module tb ();
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
 
-  tt_um_mini_aie_cgra_2x2 user_project (
+  tt_um_mini_aie_2x2 user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST

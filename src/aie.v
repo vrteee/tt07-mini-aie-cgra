@@ -1,6 +1,6 @@
 `default_nettype none
 
-module tt_um_mini_aie_cgra_2x2 (
+module tt_um_mini_aie_2x2 (
     input  wire [7:0] ui_in,    // Dedicated inputs - connected to the input switches
     output wire [7:0] uo_out,   // Dedicated outputs - connected to the 7 segment display
     /* verilator lint_off UNUSEDSIGNAL */
