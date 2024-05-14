@@ -76,7 +76,7 @@ module tt_um_mini_aie_2x2 (
     end
 
   endgenerate
-  assign uo_out = ui_in + uio_in;
-  assign uio_out = switch_out_reg[3];
+  assign uo_out = switch_out_reg[2];
+  assign uio_out = ui_in + uio_in;
 
 endmodule

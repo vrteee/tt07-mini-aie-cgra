@@ -20,13 +20,16 @@ module compute_tile
             weight <= 4'b0000;
             has_next_core <= 1'b0;
             next_core_index <= 2'b00;
+            switch_data_out <= 8'b00000000;
         
         end else if (switch_data_in[7:6] == 2'b00) begin
-                weight <= switch_data_in[3:0];
+            weight <= switch_data_in[3:0];
+        
         end else if (switch_data_in[7:6] == 2'b01) begin
             has_next_core <= 1'b1;
             next_core_index <= switch_data_in[5:4];
             op_type <= switch_data_in[0];
+        
         end else begin
             if (op_type == 1'b0) begin
                 switch_data_out <= switch_data_in[3:0] + weight;

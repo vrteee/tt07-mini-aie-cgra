@@ -29,7 +29,7 @@ async def test_project(dut):
     dut.uio_in.value = 30
 
     # Wait for one clock cycle to see the output values
-    await ClockCycles(dut.clk, 20)
+    await ClockCycles(dut.clk, 30)
     assert dut.uo_out.value == 50
 
 

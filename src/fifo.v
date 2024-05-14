@@ -31,23 +31,7 @@ module synchronous_fifo #(parameter DEPTH=2, DATA_WIDTH=8) (
       end
     end
   end
-  
-  // // To write data to FIFO
-  // always@(posedge clk) begin
-  //   if(w_en & !full)begin
-  //     fifo[w_ptr] <= data_in;
-  //     w_ptr <= w_ptr + 1;
-  //   end
-  // end
-  
-  // // To read data from FIFO
-  // always@(posedge clk) begin
-  //   if(r_en & !empty) begin
-  //     data_out <= fifo[r_ptr];
-  //     r_ptr <= r_ptr + 1;
-  //   end
-  // end
-  
+
   assign full = ((w_ptr+1'b1) == r_ptr);
   assign empty = (w_ptr == r_ptr);
 
