@@ -9,9 +9,12 @@ This project contains a minimalistic sketch of a 2x2 coarse-grained reconfigurab
 
 ## Design Overview
 - The design consists of 4 processing elements (PEs) arranged in a 2x2 grid.
-- The design is implemented using 130 nm process on a 0.032 mm2 die area.
-- [OpenROAD](https://openroad.readthedocs.io/en) and [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) used to synthesize silicon.
+- The hardware is implemented using 130 nm process on a 0.032 mm2 die area.
+- [OpenROAD](https://openroad.readthedocs.io/en) and [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) are used to synthesize RTL into silicon.
 
+<p align="center" width="100%">
+    <img width="50%" src="./docs/aie_2x2_gds.png">
+</p>
 
 ---
 
