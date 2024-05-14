@@ -40,6 +40,14 @@ module compute_tile
             end else begin
                 switch_data_out <= switch_data_in - weight;
             end
+
+            if (has_next_core) begin
+                prev_pe_data_out <= switch_data_in;
+                next_pe_data_out <= next_pe_data_in;
+            end else begin
+                prev_pe_data_out <= switch_data_in;
+                next_pe_data_out <= 8'b00000000;
+            end
         end
     end
 endmodule

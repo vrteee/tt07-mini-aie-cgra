@@ -29,8 +29,8 @@ module tt_um_mini_aie_2x2 (
   reg [7:0] next_pe_in[4];
 
   // control signals
-  logic switch_fifo_rd_en[4];
-  logic switch_fifo_wr_en[4];
+  wire switch_fifo_rd_en[4];
+  wire switch_fifo_wr_en[4];
   
   // generate noc and pe array
   generate
@@ -79,15 +79,16 @@ module tt_um_mini_aie_2x2 (
           .wr_en(switch_fifo_wr_en[i])
       );
 
+      integer last = i == 3 ? 0 : i + 1;
       compute_tile pe (
           .clk(clk),
           .rst_n(rst_n),
           .switch_data_in(switch_pe_in[i]),
           .switch_data_out(switch_pe_out[i]),
-          .next_pe_data_in(next_pe_in[i]),
-          .prev_pe_data_in(prev_pe_in[i]),
-          .prev_pe_data_out(prev_pe_in[i]),
-          .next_pe_data_out(next_pe_in[i])
+          .prev_pe_data_in(next_pe_in[last]),
+          .next_pe_data_out(next_pe_in[i]),
+          .next_pe_data_in(prev_pe_in[last]),
+          .prev_pe_data_out(prev_pe_in[i])
       );
     end
 
