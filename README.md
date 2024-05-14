@@ -5,7 +5,13 @@
 This project contains a minimalistic sketch of a 2x2 coarse-grained reconfigurable array featuring a ring-topology network-on-chip for data communication among the processing elements. The design draws inspiration from the architecture of Versal ACAP Versal AI Engine architecture. 
 
 - Tiny Tapeout project: [Mini AI-Engine](https://app.tinytapeout.com/projects/700)
-- [Versal ACAP AI Engines Architecture](https://support.xilinx.com/s/article/1132493?language=en_US)
+- [Versal ACAP AI Engine Architecture](https://support.xilinx.com/s/article/1132493?language=en_US)
+
+## Design Overview
+- The design consists of 4 processing elements (PEs) arranged in a 2x2 grid.
+- The design is implemented using 130 nm process on a 0.032 mm2 die area.
+- [OpenROAD](https://openroad.readthedocs.io/en) and [130 nm Skywater PDK](https://skywater-pdk.readthedocs.io/en/main/) used to synthesize silicon.
+
 
 ---
 
