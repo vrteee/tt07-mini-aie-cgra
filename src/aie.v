@@ -16,12 +16,17 @@ module tt_um_mini_aie_2x2 (
   wire reset = !rst_n & ena;
   assign uio_oe = 8'b11111111;
 
-  // intermediate regs between FIFOs
-  reg [7:0] switch_in_reg[4];
-  reg [7:0] switch_out_reg[4];
+  // intermediate regs between FIFOs and switches
+  reg [7:0] switch_fifo_in[4];
+  reg [7:0] switch_fifo_out[4];
 
-  reg [7:0] pe_out_reg[4];
-  reg [7:0] pe_in_reg[4];
+  // intermediate regs between switches and PEs
+  reg [7:0] switch_pe_out[4];
+  reg [7:0] switch_pe_in[4];
+
+  // intermediate regs between PEs
+  reg [7:0] prev_pe_in[4];
+  reg [7:0] next_pe_in[4];
 
   // control signals
   logic switch_fifo_rd_en[4];
@@ -41,7 +46,7 @@ module tt_um_mini_aie_2x2 (
             .w_en(ena),
             .r_en(switch_fifo_rd_en[i]),
             .data_in(ui_in + uio_in),
-            .data_out(switch_in_reg[i]),
+            .data_out(switch_fifo_in[i]),
             .full(),
             .empty()
         );
@@ -54,8 +59,8 @@ module tt_um_mini_aie_2x2 (
             .rst_n(rst_n),
             .w_en(switch_fifo_wr_en[i-1]),
             .r_en(switch_fifo_rd_en[i]),
-            .data_in(switch_out_reg[i-1]),
-            .data_out(switch_in_reg[i]),
+            .data_in(switch_fifo_out[i-1]),
+            .data_out(switch_fifo_in[i]),
             .full(),
             .empty()
         );
@@ -66,10 +71,10 @@ module tt_um_mini_aie_2x2 (
       ) switch (
           .clk(clk),
           .rst_n(rst_n),
-          .switch_fifo_in(switch_in_reg[i]),
-          .switch_fifo_out(switch_out_reg[i]),
-          .pe_fifo_in(pe_out_reg[i]),
-          .pe_fifo_out(pe_in_reg[i]),
+          .switch_fifo_in(switch_fifo_in[i]),
+          .switch_fifo_out(switch_fifo_out[i]),
+          .pe_fifo_in(switch_pe_out[i]),
+          .pe_fifo_out(switch_pe_in[i]),
           .rd_en(switch_fifo_rd_en[i]),
           .wr_en(switch_fifo_wr_en[i])
       );
@@ -77,13 +82,17 @@ module tt_um_mini_aie_2x2 (
       compute_tile pe (
           .clk(clk),
           .rst_n(rst_n),
-          .switch_data_in(pe_in_reg[i]),
-          .switch_data_out(pe_out_reg[i])
+          .switch_data_in(switch_pe_in[i]),
+          .switch_data_out(switch_pe_out[i]),
+          .next_pe_data_in(next_pe_in[i]),
+          .prev_pe_data_in(prev_pe_in[i]),
+          .prev_pe_data_out(prev_pe_in[i]),
+          .next_pe_data_out(next_pe_in[i])
       );
     end
 
   endgenerate
-  assign uo_out = switch_out_reg[2];
+  assign uo_out = switch_fifo_out[2];
   assign uio_out = ui_in + uio_in;
 
 endmodule

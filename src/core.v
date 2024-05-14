@@ -5,7 +5,11 @@ module compute_tile
     input wire clk, 
     input wire rst_n,
     input [7:0] switch_data_in,
-    output reg [7:0] switch_data_out
+    output reg [7:0] switch_data_out,
+    output reg [7:0] next_pe_data_out,
+    input [7:0] next_pe_data_in,
+    input [7:0] prev_pe_data_in,
+    output reg [7:0] prev_pe_data_out
 );
 
     reg op_type;
