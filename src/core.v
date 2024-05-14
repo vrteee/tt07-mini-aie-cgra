@@ -34,7 +34,7 @@ module compute_tile
             switch_data_out <= 8'b00000000;
         
         end else if (switch_data_in[7:6] == 2'b00) begin
-            $display("compute_tile config weight: %d", switch_data_in);
+            // $display("compute_tile config weight: %d", switch_data_in);
             weight <= switch_data_in[3:0];
         
         end else if (switch_data_in[7:6] == 2'b01) begin
@@ -44,10 +44,11 @@ module compute_tile
         
         end else begin
             if (has_next_core) begin
-                case (next_core_offset)
-                    1'b0: next_pe_data_out <= switch_data_in;
-                    1'b1: prev_pe_data_out <= switch_data_in;
-                endcase
+                next_pe_data_out <= switch_data_in;
+                // case (next_core_offset)
+                //     1'b0: next_pe_data_out <= switch_data_in;
+                //     1'b1: prev_pe_data_out <= switch_data_in;
+                // endcase
             end else begin
                 switch_data_out <= weight + prev_pe_data_in + next_pe_data_in;
                 // case (op_type) 

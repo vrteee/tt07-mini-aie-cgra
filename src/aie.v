@@ -38,7 +38,7 @@ module tt_um_mini_aie_cgra_2x2 (
     for (i = 0; i < 4; i = i + 1) begin : gen
       if (i == 0) begin
         synchronous_fifo #(
-            .DEPTH(4),
+            .DEPTH(2),
             .DATA_WIDTH(8)
         ) fifo (
             .clk(clk),
@@ -52,7 +52,7 @@ module tt_um_mini_aie_cgra_2x2 (
         );
       end else begin
         synchronous_fifo #(
-            .DEPTH(4),
+            .DEPTH(2),
             .DATA_WIDTH(8)
         ) fifo (
             .clk(clk),
@@ -94,7 +94,7 @@ module tt_um_mini_aie_cgra_2x2 (
 
   endgenerate
   assign uo_out = switch_fifo_out[2];
-  assign uio_out = switch_fifo_out[3];
+  assign uio_out = 8'b00000000;
 
   always @(posedge clk or negedge rst_n) begin
     $display("------------");
