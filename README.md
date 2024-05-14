@@ -1,5 +1,14 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
+
+# Mini AI-Engine: a 2x2 Coarse-Grained Reconfigurable Array with NoC
+This project contains a minimalistic sketch of a 2x2 coarse-grained reconfigurable array featuring a ring-topology network-on-chip for data communication among the processing elements. The design draws inspiration from the architecture of Versal ACAP Versal AI Engine architecture. 
+
+- Tiny Tapeout project: [Mini AI-Engine](https://app.tinytapeout.com/projects/700)
+- [Versal ACAP AI Engines Architecture](https://support.xilinx.com/s/article/1132493?language=en_US)
+
+---
+
 # Tiny Tapeout Verilog Project Template
 
 - [Read the documentation for project](docs/info.md)

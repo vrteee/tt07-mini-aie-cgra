@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        "mini-aie-cgra"    # Project title
-  author:       "hecmay"      # Your name
+  title:        "Mini AIE: 2x2 CGRA with Ring-NoC"    # Project title
+  author:       "Lyte Venn"   # Your name
   discord:      "vrteee"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "a mini aie/coarse-grained reconfigurable array"      # One line description of what your project does
+  description:  "A mini aie/coarse-grained reconfigurable array"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     10000000       # Clock frequency in Hz
 
@@ -11,7 +11,7 @@ project:
   tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_mini_aie_2x2"
+  top_module:  "tt_um_mini_aie_cgra_2x2"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        

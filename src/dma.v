@@ -1,10 +1,3 @@
-
-// data_in[7:6] -> state
-//   state = 00: CONFIG(WEIGHT)
-//   state = 01: CONFIG(NEXT_PE, OP)
-//   state = 10: START(OPERAND)
-//   state = 11: END(OUTPUT)
-
 module dma (
     input logic clk,
     input logic reset,

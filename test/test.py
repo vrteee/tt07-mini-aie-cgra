@@ -22,14 +22,12 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 5)
     dut.rst_n.value = 1
 
-    dut._log.info("Test project behavior")
-
-    # Set the input values you want to test
-    dut.ui_in.value = 20
-    dut.uio_in.value = 30
+    dut._log.info("Start aie test execution...")
+    dut.ui_in.value = 0b00110010
+    dut.uio_in.value = 0b10000000 
 
     # Wait for one clock cycle to see the output values
     await ClockCycles(dut.clk, 30)
-    assert dut.uo_out.value == 50, f"Expected 50, got {dut.uo_out.value}"
+    assert dut.uo_out.value == 0b00110010
 
 

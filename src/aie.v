@@ -45,7 +45,7 @@ module tt_um_mini_aie_2x2 (
             .rst_n(rst_n),
             .w_en(ena),
             .r_en(switch_fifo_rd_en[i]),
-            .data_in(ui_in + uio_in),
+            .data_in(ui_in),
             .data_out(switch_fifo_in[i]),
             .full(),
             .empty()
@@ -94,6 +94,16 @@ module tt_um_mini_aie_2x2 (
 
   endgenerate
   assign uo_out = switch_fifo_out[2];
-  assign uio_out = ui_in + uio_in;
+  assign uio_out = switch_fifo_out[3];
+
+  always @(posedge clk or negedge rst_n) begin
+    $display("------------");
+    $display("uo_out: %d, uio_in[7]: %d", uo_out, uio_in[7]);
+    $display("switch_fifo_out[0]: %b, switch_fifo_in[0]: %b", switch_fifo_out[0], switch_fifo_in[0]);
+    $display("switch_fifo_out[1]: %b, switch_fifo_in[1]: %b", switch_fifo_out[1], switch_fifo_in[1]);
+    $display("switch_fifo_out[2]: %b, switch_fifo_in[2]: %b", switch_fifo_out[2], switch_fifo_in[2]);
+    $display("switch_fifo_out[3]: %b, switch_fifo_in[3]: %b", switch_fifo_out[3], switch_fifo_in[3]);
+  end
+  
 
 endmodule
