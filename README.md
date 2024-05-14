@@ -16,7 +16,6 @@ This project contains a minimalistic sketch of a 2x2 coarse-grained reconfigurab
     <img width="50%" src="./docs/aie_2x2_gds.png">
 </p>
 
----
 
 # Tiny Tapeout Verilog Project Template
 
