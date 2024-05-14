@@ -13,8 +13,8 @@ module switch
     output wire wr_en
 );
 
-logic [7:0] prev_switch_fifo_in;
-logic [7:0] prev_pe_fifo_in;
+reg [7:0] prev_switch_fifo_in;
+reg [7:0] prev_pe_fifo_in;
 
 wire pe_rd, fifo_rd;
 assign pe_rd = pe_fifo_in != prev_pe_fifo_in;

@@ -30,6 +30,6 @@ async def test_project(dut):
 
     # Wait for one clock cycle to see the output values
     await ClockCycles(dut.clk, 30)
-    assert dut.uo_out.value == 50
+    assert dut.uo_out.value == 50, f"Expected 50, got {dut.uo_out.value}"
 
 
