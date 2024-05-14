@@ -49,10 +49,11 @@ module compute_tile
                     1'b1: prev_pe_data_out <= switch_data_in;
                 endcase
             end else begin
-                case (op_type) 
-                    1'b0: switch_data_out <= weight + prev_pe_data_in + next_pe_data_in;
-                    1'b1: switch_data_out <= weight & prev_pe_data_in & next_pe_data_in;
-                endcase    
+                switch_data_out <= weight + prev_pe_data_in + next_pe_data_in;
+                // case (op_type) 
+                //     1'b0: switch_data_out <= weight + prev_pe_data_in + next_pe_data_in;
+                //     1'b1: switch_data_out <= weight & prev_pe_data_in & next_pe_data_in;
+                // endcase    
             end
         end
     end

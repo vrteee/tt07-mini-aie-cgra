@@ -23,7 +23,6 @@ module tb ();
   wire [7:0] uio_out;
   wire [7:0] uio_oe;
 
-  // Replace tt_um_example with your module name:
   tt_um_mini_aie_cgra_2x2 user_project (
 
       // Include power ports for the Gate Level test:
